@@ -19,7 +19,7 @@ class Video{
   }
 
   Video.readDoc(DocumentSnapshot doc){
-    this.date = doc[VideoField.date];
+    this.date = doc[VideoField.date].toDate();
     this.set = doc[VideoField.set];
     this.team = doc[VideoField.team];
     this.url = doc[VideoField.url];

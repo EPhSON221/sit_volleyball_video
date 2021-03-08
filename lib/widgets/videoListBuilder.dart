@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../widgets/videoListTile.dart';
 
 
-class BuildVideoList extends StatelessWidget {
+class VideoListBuilder extends StatelessWidget {
   final CollectionReference videos = FirebaseFirestore.instance.collection('videos');
 
   @override

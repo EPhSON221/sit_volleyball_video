@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/buildVideoList.dart';
+import '../widgets/videoListBuilder.dart';
 
 class VideoList extends StatelessWidget {
   @override
@@ -15,7 +15,7 @@ class VideoList extends StatelessWidget {
           ),
         ],
       ),
-      body: BuildVideoList(),
+      body: VideoListBuilder(),
     );
   }
 }
