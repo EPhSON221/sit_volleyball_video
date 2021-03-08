@@ -23,7 +23,7 @@ class VideoListBuilder extends StatelessWidget {
           default:
             return ListView(
               children: snapshot.data.docs.map((DocumentSnapshot document) {
-                return VideoListTile(document);
+                return VideoListCard(document);
               }).toList(),
             );
         }

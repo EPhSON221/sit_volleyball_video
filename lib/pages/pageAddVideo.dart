@@ -5,7 +5,7 @@ import '../widgets/normalFormField.dart';
 import '../widgets/dateField.dart';
 import '../widgets/addCancelButtons.dart';
 
-class AddVideoPage extends StatefulWidget {
+class AddVideoPage extends StatelessWidget {
   final TextEditingController date = new TextEditingController();
   final TextEditingController set = new TextEditingController();
   final TextEditingController team = new TextEditingController();
@@ -22,16 +22,7 @@ class AddVideoPage extends StatefulWidget {
     controllerList.add(url);
   }
 
-  AddVideoPageState createState() => AddVideoPageState();
-}
-
-class AddVideoPageState extends State<AddVideoPage> {
-  List<TextEditingController> controllerList = [];
-
-  @override
   Widget build(BuildContext context) {
-    controllerList.addAll(widget.controllerList);
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(

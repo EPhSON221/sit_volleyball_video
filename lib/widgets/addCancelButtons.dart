@@ -49,11 +49,7 @@ class AddButton extends StatelessWidget{
         color: Colors.green.shade100,
         child: Text('追加'),
         onPressed: () {
-          final Video video = new Video();
-          video.date = DateTime.parse(controllerList[0].text + ' 00:00:00');
-          video.set = int.parse(controllerList[1].text);
-          video.team = controllerList[2].text;
-          video.url = controllerList[3].text;
+          final Video video = new Video.readController(controllerList);
 
           if(VideoDataStore.existBlank(video)){
             ExistBlankDialog(context);
