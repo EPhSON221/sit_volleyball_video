@@ -7,7 +7,7 @@ class Video{
   String url;
   Timestamp createdAt = Timestamp.fromDate(DateTime.now());
 
-  Video();
+  Video({this.date,this.set,this.team,this.url});
 
   Video.readMap(Map<String,dynamic> map){
     this.date = map[VideoField.date].toDate();

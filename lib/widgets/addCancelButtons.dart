@@ -5,12 +5,9 @@ import '../dialogs/existBlankDialog.dart';
 
 // ignore: must_be_immutable
 class AddCancelButtons extends StatelessWidget{
-  TextEditingController date;
-  TextEditingController set;
-  TextEditingController team;
-  TextEditingController url;
+  final controllerList;
 
-  AddCancelButtons(this.date,this.set,this.team,this.url);
+  AddCancelButtons(this.controllerList);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +15,7 @@ class AddCancelButtons extends StatelessWidget{
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         CancelButton(),
-        AddButton(date,set,team,url),
+        AddButton(controllerList),
       ],
     );
   }
@@ -40,12 +37,9 @@ class CancelButton extends StatelessWidget{
 
 // ignore: must_be_immutable
 class AddButton extends StatelessWidget{
-  TextEditingController date;
-  TextEditingController set;
-  TextEditingController team;
-  TextEditingController url;
+  final controllerList;
 
-  AddButton(this.date,this.set,this.team,this.url);
+  AddButton(this.controllerList);
 
   @override
   Widget build(BuildContext context) {
@@ -56,10 +50,10 @@ class AddButton extends StatelessWidget{
         child: Text('追加'),
         onPressed: () {
           final Video video = new Video();
-          video.date = DateTime.parse(date.text + ' 00:00:00');
-          video.set = int.parse(set.text);
-          video.team = team.text;
-          video.url = url.text;
+          video.date = DateTime.parse(controllerList[0].text + ' 00:00:00');
+          video.set = int.parse(controllerList[1].text);
+          video.team = controllerList[2].text;
+          video.url = controllerList[3].text;
 
           if(VideoDataStore.existBlank(video)){
             ExistBlankDialog(context);

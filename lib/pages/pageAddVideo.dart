@@ -5,42 +5,57 @@ import '../widgets/normalFormField.dart';
 import '../widgets/dateField.dart';
 import '../widgets/addCancelButtons.dart';
 
-class AddVideoPage extends StatelessWidget {
+class AddVideoPage extends StatefulWidget {
+  final TextEditingController date = new TextEditingController();
+  final TextEditingController set = new TextEditingController();
+  final TextEditingController team = new TextEditingController();
+  final TextEditingController url = new TextEditingController();
+  final List<TextEditingController> controllerList = [];
+
+  AddVideoPage() {
+    DateFormat formatter = new DateFormat('yyyy-MM-dd');
+    String today = formatter.format(DateTime.now());
+    date.text = today;
+    controllerList.add(date);
+    controllerList.add(set);
+    controllerList.add(team);
+    controllerList.add(url);
+  }
+
+  AddVideoPageState createState() => AddVideoPageState();
+}
+
+class AddVideoPageState extends State<AddVideoPage> {
+  List<TextEditingController> controllerList = [];
+
   @override
   Widget build(BuildContext context) {
+    controllerList.addAll(widget.controllerList);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.green.shade900,
         title: Text('動画を追加'),
       ),
-      body: Builder(
-        builder: (context) => buildBody(context),
-      ),
+      body: buildBody(),
     );
   }
 
-  Widget buildBody(BuildContext context) {
-    DateFormat formatter = new DateFormat('yyyy-MM-dd');
-    String today = formatter.format(DateTime.now());
-    TextEditingController date = new TextEditingController(text: today);
-    TextEditingController set = new TextEditingController();
-    TextEditingController team = new TextEditingController();
-    TextEditingController url = new TextEditingController();
-
+  Widget buildBody() {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
         children: [
-          DateField(date,DateTime.now()),
+          DateField(controllerList[0], DateTime.now()),
           SizedBox(height: 20),
-          NormalFormField('set', '例）4', set),
+          NormalFormField('set', '例）4', controllerList[1]),
           SizedBox(height: 20),
-          NormalTextField('team','例）芝浦工大', team),
+          NormalTextField('team', '例）芝浦工大', controllerList[2]),
           SizedBox(height: 20),
-          NormalTextField('URL','https://google.com',url),
+          NormalTextField('URL', 'https://google.com', controllerList[3]),
           SizedBox(height: 20),
-          AddCancelButtons(date, set, team, url),
+          AddCancelButtons(controllerList),
         ],
       ),
     );
