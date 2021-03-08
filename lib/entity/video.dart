@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sit_volleyball_video/entity/videoDataStore.dart';
+import 'package:intl/intl.dart';
 
 class Video{
   DateTime date;
@@ -7,6 +7,7 @@ class Video{
   String team;
   String url;
   Timestamp createdAt = Timestamp.fromDate(DateTime.now());
+  DateFormat formatter = new DateFormat('yyyy-MM-dd');
 
   Video({this.date,this.set,this.team,this.url});
 
@@ -39,6 +40,15 @@ class Video{
       VideoField.url: this.url,
       VideoField.createdAt: this.createdAt,
     };
+  }
+
+  List<String> toList(){
+    List<String> list = [];
+    list.add(formatter.format(date));
+    list.add('$set');
+    list.add(team);
+    list.add(url);
+    return list;
   }
 }
 

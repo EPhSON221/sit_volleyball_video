@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class GeneralAlertDialog {
+class NormalAlertDialog {
   final String alert;
   final BuildContext context;
 
-  GeneralAlertDialog(this.alert,this.context) {
+  NormalAlertDialog(this.alert,this.context) {
     showDialog(
         context: context,
         builder: (context){
