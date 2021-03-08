@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:sit_volleyball_video/entity/videoDataStore.dart';
 
 class Video{
   DateTime date;
@@ -14,6 +15,20 @@ class Video{
     this.set = map[VideoField.set];
     this.team = map[VideoField.team];
     this.url = map[VideoField.url];
+  }
+
+  Video.readDoc(DocumentSnapshot doc){
+    this.date = doc[VideoField.date];
+    this.set = doc[VideoField.set];
+    this.team = doc[VideoField.team];
+    this.url = doc[VideoField.url];
+  }
+
+  Video.readController(List list){
+    this.date = DateTime.parse(list[0].text);
+    this.set = int.parse(list[1].text);
+    this.team = list[2].text;
+    this.url = list[3].text;
   }
 
   Map<String,dynamic> toMap(){

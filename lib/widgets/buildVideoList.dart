@@ -42,7 +42,7 @@ class BuildVideoList extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => EditVideoList(dateTime,set,team,url,document.id),
+                            builder: (context) => EditVideoList(document),
                         ),
                       );
                     },

@@ -23,22 +23,6 @@ class DateFieldState extends State<DateField> {
     );
   }
 
-  Future<Null> selectDate(BuildContext context) async {
-    DateTime date = widget.dateTime;
-
-    final DateTime pickedDate = await showDatePicker(
-      context: context,
-      initialDate: date,
-      firstDate: new DateTime(2018),
-      lastDate: new DateTime.now().add(new Duration(days: 360)),
-    );
-
-    if(pickedDate != null) {
-      setState(() => date = pickedDate);
-      widget.controller.text = formatter.format(date);
-    }
-  }
-
   InputDecoration decoration(){
     return InputDecoration(
       labelText: 'date',
@@ -50,4 +34,20 @@ class DateFieldState extends State<DateField> {
     FocusScope.of(context).requestFocus(new FocusNode());
     selectDate(context);
   }
+
+  Future<Null> selectDate(BuildContext context) async {
+
+    final DateTime pickedDate = await showDatePicker(
+      context: context,
+      initialDate: widget.dateTime,
+      firstDate: new DateTime(2018),
+      lastDate: new DateTime.now().add(new Duration(days: 360)),
+    );
+
+    if(pickedDate != null) {
+      setState(() => widget.dateTime = pickedDate);
+      widget.controller.text = formatter.format(widget.dateTime);
+    }
+  }
+
 }
