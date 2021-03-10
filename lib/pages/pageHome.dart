@@ -9,15 +9,19 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.green.shade900,
         title: Text('芝浦工業大学 バレーボール部'),
       ),
-      body: ListView(
-        children: [
-          ListTile(
-            leading: Icon(Icons.video_collection),
-            title: Text('動画'),
-            onTap: () => Navigator.pushNamed(context, '/Video'),
-          ),
-        ],
-      ),
+      body: buildBody(context),
+    );
+  }
+  
+  Widget buildBody(BuildContext context){
+    return ListView(
+      children: [
+        ListTile(
+          leading: Icon(Icons.video_collection),
+          title: Text('動画'),
+          onTap: () => Navigator.pushNamed(context, '/Video'),
+        ),
+      ],
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
-import '../urlFormat.dart';
+import '../url.dart';
 
 class Video{
   DateTime date;
@@ -31,7 +31,7 @@ class Video{
     this.set = int.parse(list[1].text);
     this.team = list[2].text;
     this.url = list[3].text;
-    this.url = UrlFormatter(this.url).inputFormat();
+    this.url = URL.inputFormat(url).url;
   }
 
   Map<String,dynamic> toMap(){

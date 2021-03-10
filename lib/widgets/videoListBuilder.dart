@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../widgets/videoListTile.dart';
+import '../widgets/videoListCard.dart';
 
 
 class VideoListBuilder extends StatelessWidget {
@@ -12,9 +12,8 @@ class VideoListBuilder extends StatelessWidget {
       stream: videos.orderBy('createdAt',descending: true).snapshots(),
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
 
-        if (snapshot.hasError) {
-          return Text('Error: $snapshot.error');
-        }
+        if (snapshot.hasError) return Text('Error: $snapshot.error');
+
         switch (snapshot.connectionState) {
 
           case ConnectionState.waiting:

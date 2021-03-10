@@ -16,6 +16,7 @@ dependencies:
   firebase_core: ^0.7.0
   url_launcher: ^5.7.10
   intl: ^0.16.1
+  video_player: ^1.0.1
 
 dev_dependencies:
   flutter_test:

@@ -7,7 +7,7 @@ import '../widgets/normalFormField.dart';
 import '../widgets/dateField.dart';
 import '../widgets/delUpdateButtons.dart';
 
-class EditVideoList extends StatelessWidget{
+class EditVideoInfo extends StatelessWidget{
   final TextEditingController date = new TextEditingController();
   final TextEditingController set = new TextEditingController();
   final TextEditingController team = new TextEditingController();
@@ -16,7 +16,7 @@ class EditVideoList extends StatelessWidget{
   final DocumentSnapshot document;
   final DateFormat formatter = new DateFormat('yyyy-MM-dd');
 
-  EditVideoList(this.document){
+  EditVideoInfo(this.document){
     DateTime dateTime = document[VideoField.date].toDate();
     date.text = formatter.format(dateTime);
     set.text = '${document[VideoField.set]}';
