@@ -19,7 +19,7 @@ class PageVideoDetails extends StatelessWidget{
         centerTitle: true,
         actions: [_iconButton(context)],
       ),
-      body: _buildBody(video,context),
+      body: _buildBody(video),
     );
   }
 
@@ -39,7 +39,7 @@ class PageVideoDetails extends StatelessWidget{
     );
   }
 
-  Widget _buildBody(Video video,BuildContext context){
+  Widget _buildBody(Video video){
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
