@@ -23,8 +23,8 @@ class DeleteVideoDialog {
     );
   }
 
-  void _onButtonPressed(){
+  void _onButtonPressed() {
     VideoDataStore.delVideo(path);
-    Navigator.popAndPushNamed(context, '/VideoList');
+    Navigator.popUntil(context, ModalRoute.withName('/VideoList'));
   }
 }

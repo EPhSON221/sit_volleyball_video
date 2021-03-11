@@ -1,7 +1,57 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../url.dart';
 import '../pages/pageVideoDetails.dart';
 import '../entity/video.dart';
+
+
+class VideoCard extends StatefulWidget{
+  final DocumentSnapshot document;
+
+  VideoCard(this.document);
+
+  VideoCardState createState() => VideoCardState();
+}
+
+class VideoCardState extends State<VideoCard>{
+  Image image;
+  Column title;
+
+  @override
+  void initState() {
+    print('initState');
+    super.initState();
+    _setCard();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    setState(() {});
+    return Card(
+      child: InkWell(
+        onTap: null,
+        child: Row(
+          children: [
+            Expanded(child: image),
+            Expanded(child: title),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _setCard()async{
+    Video video = new Video.readDoc(widget.document);
+    String imgURL = URL.imageFormat(video.url);
+    if(await URL.isCollect(imgURL)){
+      this.title = video.getTitle();
+      this.image = Image.network(imgURL);
+    }else{
+      this.title = video.getTitle();
+      this.image = Image.asset('images/wrongURL.png');
+    }
+  }
+}
 
 
 class VideoListCard extends StatelessWidget{

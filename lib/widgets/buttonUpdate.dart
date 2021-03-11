@@ -11,13 +11,10 @@ class ButtonUpdate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 110,
-      child: RaisedButton(
+    return RaisedButton(
         child: Text('更新'),
         color: Colors.green.shade100,
         onPressed: () => _onButtonPressed(context),
-      ),
     );
   }
 
@@ -28,7 +25,7 @@ class ButtonUpdate extends StatelessWidget {
       ExistBlankDialog(context);
     } else {
       VideoDataStore.updateVideo(path, video);
-      Navigator.popAndPushNamed(context,'/VideoList');
+      Navigator.of(context).pop();
     }
   }
 }
