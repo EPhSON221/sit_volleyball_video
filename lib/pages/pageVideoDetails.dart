@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:sit_volleyball_video/entity/video.dart';
+import '../entity/video.dart';
 import '../pages/pageEditVideoInfo.dart';
-import '../url.dart';
 
 class PageVideoDetails extends StatelessWidget{
   final DocumentSnapshot document;
@@ -11,42 +10,41 @@ class PageVideoDetails extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    Video video = Video.readDoc(document);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
-        actions: [
-          goEditPageIcon(context),
-        ],
         backgroundColor: Colors.green.shade900,
+        title: video.getTitle(),
+        centerTitle: true,
+        actions: [_iconButton(context)],
       ),
-      body: buildBody(),
+      body: _buildBody(video,context),
     );
   }
 
-  Widget goEditPageIcon(BuildContext context){
+  Widget _iconButton(BuildContext context){
     return IconButton(
       icon: Icon(Icons.more_horiz),
-      onPressed: () => onIconPressed(context),
+      onPressed: () => _onIconPressed(context),
     );
   }
 
-  void onIconPressed(BuildContext context){
+  void _onIconPressed(BuildContext context){
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => EditVideoInfo(document),
+        builder: (context) => PageEditVideoInfo(document),
       ),
     );
   }
 
-  Widget buildBody(){
-    String url = document[VideoField.url];
-    String imgURL = URL.imageFormat(url).url;
+  Widget _buildBody(Video video,BuildContext context){
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
-          child: Image.network(imgURL),
+          child: video.getThumbnail(),
         ),
       ],
     );

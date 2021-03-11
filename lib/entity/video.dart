@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../url.dart';
 
@@ -12,12 +13,7 @@ class Video{
 
   Video({this.date,this.set,this.team,this.url});
 
-  Video.readMap(Map<String,dynamic> map){
-    this.date = map[VideoField.date].toDate();
-    this.set = map[VideoField.set];
-    this.team = map[VideoField.team];
-    this.url = map[VideoField.url];
-  }
+
 
   Video.readDoc(DocumentSnapshot doc){
     this.date = doc[VideoField.date].toDate();
@@ -31,7 +27,7 @@ class Video{
     this.set = int.parse(list[1].text);
     this.team = list[2].text;
     this.url = list[3].text;
-    this.url = URL.inputFormat(url).url;
+    this.url = URL.inputFormat(url);
   }
 
   Map<String,dynamic> toMap(){
@@ -44,13 +40,19 @@ class Video{
     };
   }
 
-  List<String> toList(){
-    List<String> list = [];
-    list.add(formatter.format(date));
-    list.add('$set');
-    list.add(team);
-    list.add(url);
-    return list;
+  Widget getTitle(){
+    return Column(
+      children: [
+        Text('${formatter.format(date)}'),
+        Text('vs$team $setセット目'),
+      ],
+    );
+  }
+
+  Widget getThumbnail(){
+    String imgURL = URL.imageFormat(url);
+    if(imgURL == 'wrong') return Image.asset('images/wrongURL.png');
+    else return Image.network(imgURL);
   }
 }
 

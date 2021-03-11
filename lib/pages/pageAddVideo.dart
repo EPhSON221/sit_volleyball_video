@@ -5,14 +5,14 @@ import '../widgets/normalFormField.dart';
 import '../widgets/dateField.dart';
 import '../widgets/addCancelButtons.dart';
 
-class AddVideoPage extends StatelessWidget {
+class PageAddVideo extends StatelessWidget {
   final TextEditingController date = new TextEditingController();
   final TextEditingController set = new TextEditingController();
   final TextEditingController team = new TextEditingController();
   final TextEditingController url = new TextEditingController();
   final List<TextEditingController> controllerList = [];
 
-  AddVideoPage() {
+  PageAddVideo() {
     DateFormat formatter = new DateFormat('yyyy-MM-dd');
     String today = formatter.format(DateTime.now());
     date.text = today;
@@ -29,11 +29,11 @@ class AddVideoPage extends StatelessWidget {
         backgroundColor: Colors.green.shade900,
         title: Text('動画を追加'),
       ),
-      body: buildBody(),
+      body: _buildBody(),
     );
   }
 
-  Widget buildBody() {
+  Widget _buildBody() {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(

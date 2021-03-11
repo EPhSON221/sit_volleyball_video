@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatelessWidget {
+class PageHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,17 +9,17 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.green.shade900,
         title: Text('芝浦工業大学 バレーボール部'),
       ),
-      body: buildBody(context),
+      body: _buildBody(context),
     );
   }
   
-  Widget buildBody(BuildContext context){
+  Widget _buildBody(BuildContext context){
     return ListView(
       children: [
         ListTile(
           leading: Icon(Icons.video_collection),
           title: Text('動画'),
-          onTap: () => Navigator.pushNamed(context, '/Video'),
+          onTap: () => Navigator.pushNamed(context, '/VideoList'),
         ),
       ],
     );

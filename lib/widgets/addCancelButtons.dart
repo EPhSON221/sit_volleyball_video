@@ -48,20 +48,22 @@ class AddButton extends StatelessWidget{
       child: RaisedButton(
         color: Colors.green.shade100,
         child: Text('追加'),
-        onPressed: () {
-          final Video video = new Video.readController(controllerList);
-
-          if(VideoDataStore.existBlank(video)){
-            ExistBlankDialog(context);
-          }else{
-            VideoDataStore.addVideo(video);
-            Scaffold.of(context).showSnackBar(SnackBar(
-              content: Text('done!'),
-              duration: Duration(seconds: 2),
-            ));
-          }
-        },
+        onPressed: () => _onButtonPressed(context),
       ),
     );
+  }
+
+  void _onButtonPressed(BuildContext context){
+    final Video video = new Video.readController(controllerList);
+
+    if(VideoDataStore.existBlank(video)){
+      ExistBlankDialog(context);
+    }else{
+      VideoDataStore.addVideo(video);
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text('done!'),
+        duration: Duration(seconds: 2),
+      ));
+    }
   }
 }

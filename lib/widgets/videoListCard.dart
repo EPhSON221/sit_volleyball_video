@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import '../url.dart';
 import '../pages/pageVideoDetails.dart';
-import '../pages/pageEditVideoInfo.dart';
 import '../entity/video.dart';
 
 
@@ -14,67 +12,43 @@ class VideoListCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     final Video video = new Video.readDoc(document);
-    String imgURL = URL.imageFormat(video.url).url;
 
     return Card(
       child: InkWell(
-        onTap: () => onCardTapped(video,context),
-        child: cardLayOut(video,imgURL,context),
+        child: _cardLayOut(video),
+        onTap: () => _onCardTapped(context),
       ),
     );
   }
 
-  Widget cardLayOut(Video video,String url,context){
+  Widget _cardLayOut(Video video){
     return Padding(
       padding: EdgeInsets.all(7.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          image(url),
-          title(video),
-          button(context),
+          _image(video),
+          _title(video),
         ],
       ),
     );
   }
   
-  Widget image(String url){
+  Widget _image(Video video){
     return Expanded(
       flex: 2,
-      child: Image.network(url),
+      child: video.getThumbnail(),
     );
   }
 
-  Widget title(Video video){
-    List<String> list = video.toList();
+  Widget _title(Video video){
     return Expanded(
       flex: 3,
-      child: Column(
-        children: [
-          Text('${list[0]}'),
-          Text('${list[1]}セット目 vs${list[2]}'),
-        ],
-      ),
+      child: video.getTitle(),
     );
   }
 
-  Widget button(context){
-    return IconButton(
-      icon: Icon(Icons.more_horiz),
-      onPressed: () => onButtonPressed(context),
-    );
-  }
-
-  void onButtonPressed(context){
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => EditVideoInfo(document),
-      )
-    );
-  }
-
-  Future<void> onCardTapped(Video video,BuildContext context)async{
+  void _onCardTapped(BuildContext context){
     Navigator.push(
       context,
       MaterialPageRoute(

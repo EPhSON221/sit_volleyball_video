@@ -12,9 +12,9 @@ void main()  async{
     MaterialApp(
       initialRoute: '/Home',
       routes: {
-        '/Home': (context) => Home(),
-        '/Video': (context) => VideoList(),
-        '/Add': (context) => AddVideoPage(),
+        '/Home': (context) => PageHome(),
+        '/VideoList': (context) => PageVideoList(),
+        '/AddVideo': (context) => PageAddVideo(),
       },
     ),
   );
