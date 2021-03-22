@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../url.dart';
@@ -8,12 +9,7 @@ class Video{
   int set;
   String team;
   String url;
-  Timestamp createdAt = Timestamp.fromDate(DateTime.now());
   DateFormat formatter = new DateFormat('yyyy/MM/dd');
-
-  Video({this.date,this.set,this.team,this.url});
-
-
 
   Video.readDoc(DocumentSnapshot doc){
     this.date = doc[VideoField.date].toDate();
@@ -36,8 +32,17 @@ class Video{
       VideoField.set: this.set,
       VideoField.team: this.team,
       VideoField.url: this.url,
-      VideoField.createdAt: this.createdAt,
     };
+  }
+
+  bool existBlank(){
+    bool date = this.date == null;
+    bool set = this.set == null;
+    bool team = this.team == '';
+    bool url = this.url == '';
+
+    if (date||set||team||url) return true;
+    else  return false;
   }
 
   Widget getTitle(){
@@ -61,12 +66,4 @@ class VideoField{
   static const set = 'set';
   static const team = 'team';
   static const url = 'url';
-  static const createdAt = 'createdAt';
-}
-
-class VideoDocument{
-  String documentId;
-  Video video;
-
-  VideoDocument(this.documentId,this.video);
 }

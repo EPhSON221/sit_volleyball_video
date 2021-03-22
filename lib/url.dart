@@ -16,6 +16,10 @@ class URL {
     return 'https://img.youtube.com/vi/${url.substring(32)}/mqdefault.jpg';
   }
 
+  static String twitterImage(String userName){
+    return 'https://twitter.com/${userName.substring(1)}/photo';
+  }
+
   static Future<bool> isCollect(String url)async{
     final response = await http.get(url);
     if(response.statusCode == 200) return true;

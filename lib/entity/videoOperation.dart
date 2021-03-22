@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../entity/video.dart';
 
-class VideoDataStore{
+class VideoOperation{
 
   static Future<void> addVideo(Video video)async{
     final newDocument = FirebaseFirestore.instance.collection('videos').doc();
@@ -21,13 +21,12 @@ class VideoDataStore{
     });
   }
 
-  static bool existBlank(Video video){
-    bool date = video.date == null;
-    bool set = video.set == null;
-    bool team = video.team == '';
-    bool url = video.url == '';
-
-    if (date||set||team||url) return true;
-    else  return false;
+  static Stream<QuerySnapshot> videoStream({String order,String where}){
+    CollectionReference reference = FirebaseFirestore.instance.collection('videos');
+    return reference
+        .where(VideoField.team,isEqualTo: where)
+        .orderBy(order,descending: true)
+        .orderBy(VideoField.set,descending: true)
+        .snapshots();
   }
 }

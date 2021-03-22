@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../entity/video.dart';
-import '../pages/pageEditVideoInfo.dart';
+import 'pageEditVideoInfo.dart';
 
 class PageVideoDetails extends StatelessWidget{
   final DocumentSnapshot document;

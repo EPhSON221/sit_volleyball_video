@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sit_volleyball_video/entity/videoDataStore.dart';
+import 'package:sit_volleyball_video/entity/videoOperation.dart';
 
 class DeleteVideoDialog {
   final String path;
@@ -24,7 +24,7 @@ class DeleteVideoDialog {
   }
 
   void _onButtonPressed() {
-    VideoDataStore.delVideo(path);
+    VideoOperation.delVideo(path);
     Navigator.popUntil(context, ModalRoute.withName('/VideoList'));
   }
 }

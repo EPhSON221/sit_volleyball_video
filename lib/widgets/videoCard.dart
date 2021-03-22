@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:sit_volleyball_video/pages/pageEditVideoInfo.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../pages/pageEditVideoInfo.dart';
 import '../pages/pageVideoDetails.dart';
 import '../entity/video.dart';
 
-class VideoListCard extends StatelessWidget {
+class VideoCard extends StatelessWidget {
   final DocumentSnapshot document;
 
-  VideoListCard(this.document);
+  VideoCard(this.document);
 
   @override
   Widget build(BuildContext context) {

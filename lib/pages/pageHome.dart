@@ -21,6 +21,11 @@ class PageHome extends StatelessWidget {
           title: Text('動画'),
           onTap: () => Navigator.pushNamed(context, '/VideoList'),
         ),
+        ListTile(
+          leading: Icon(Icons.paste),
+          title: Text('チーム'),
+          onTap: () => Navigator.pushNamed(context, '/TeamList'),
+        )
       ],
     );
   }

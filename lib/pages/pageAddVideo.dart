@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import '../widgets/normalTextField.dart';
 import '../widgets/normalFormField.dart';
 import '../widgets/dateField.dart';
-import '../widgets/addCancelButtons.dart';
+import '../widgets/buttonAdd.dart';
 
 class PageAddVideo extends StatelessWidget {
   final TextEditingController date = new TextEditingController();
@@ -46,7 +46,7 @@ class PageAddVideo extends StatelessWidget {
           SizedBox(height: 20),
           NormalTextField('URL', 'https://google.com', controllerList[3]),
           SizedBox(height: 20),
-          AddCancelButtons(controllerList),
+          ButtonAdd.video(controllerList),
         ],
       ),
     );

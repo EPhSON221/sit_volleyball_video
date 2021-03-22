@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../entity/video.dart';
-import '../entity/videoDataStore.dart';
+import '../entity/videoOperation.dart';
 import '../dialogs/existBlankDialog.dart';
 
 class ButtonUpdate extends StatelessWidget {
@@ -21,10 +21,10 @@ class ButtonUpdate extends StatelessWidget {
   void _onButtonPressed(BuildContext context){
     final video = Video.readController(list);
 
-    if (VideoDataStore.existBlank(video)) {
+    if (video.existBlank()) {
       ExistBlankDialog(context);
     } else {
-      VideoDataStore.updateVideo(path, video);
+      VideoOperation.updateVideo(path, video);
       Navigator.of(context).pop();
     }
   }
