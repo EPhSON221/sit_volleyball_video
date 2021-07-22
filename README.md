@@ -2,15 +2,10 @@
 
 部員向け 試合動画管理アプリ
 
-## Getting Started
+## 概要
+部では動画共有をYouTube上で行います！
 
-This project is a starting point for a Flutter application.
+他チームに動画が漏れないよう限定公開でアップするので、URL経由でしか動画にアクセスできません。
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+そのためURLを管理するアプリを作りました！
+![image](https://user-images.githubusercontent.com/61898635/126584276-7b04742d-3e99-4b1e-b0d8-821e31055f03.png)
