@@ -8,4 +8,4 @@
 他チームに動画が漏れないよう限定公開でアップするので、URL経由でしか動画にアクセスできません。
 
 そのためURLを管理するアプリを作りました！
-![image](https://user-images.githubusercontent.com/61898635/126584276-7b04742d-3e99-4b1e-b0d8-821e31055f03.png)
+![image](https://user-images.githubusercontent.com/61898635/126584611-56e92c67-bd9b-438e-b23b-cccc38beebd4.png)
