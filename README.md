@@ -1,6 +1,6 @@
 # sit_volleyball_video
 
-A new Flutter application.
+部員向け 試合動画管理アプリ
 
 ## Getting Started
 
